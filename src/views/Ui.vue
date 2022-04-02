@@ -24,7 +24,6 @@ import ModalBox from '@/components/ModalBox.vue'
 import TitledSection from '@/components/TitledSection.vue'
 import Field from '@/components/Field.vue'
 import CheckRadioPicker from '@/components/CheckRadioPicker.vue'
-import BottomOtherPagesSection from '@/components/BottomOtherPagesSection.vue'
 import TitleSubBar from '@/components/TitleSubBar.vue'
 
 const titleStack = ref(['Admin', 'UI Components'])
@@ -37,15 +36,23 @@ const modalThreeActive = ref(false)
 
 const notificationSettingsModel = ref([])
 
-const notificationsOutline = computed(() => notificationSettingsModel.value.indexOf('outline') > -1)
+const notificationsOutline = computed(
+  () => notificationSettingsModel.value.indexOf('outline') > -1
+)
 
 const buttonSettingsModel = ref([])
 
-const buttonsOutline = computed(() => buttonSettingsModel.value.indexOf('outline') > -1)
+const buttonsOutline = computed(
+  () => buttonSettingsModel.value.indexOf('outline') > -1
+)
 
-const buttonsSmall = computed(() => buttonSettingsModel.value.indexOf('small') > -1)
+const buttonsSmall = computed(
+  () => buttonSettingsModel.value.indexOf('small') > -1
+)
 
-const buttonsDisabled = computed(() => buttonSettingsModel.value.indexOf('disabled') > -1)
+const buttonsDisabled = computed(
+  () => buttonSettingsModel.value.indexOf('disabled') > -1
+)
 
 const store = useStore()
 
@@ -472,5 +479,4 @@ const darkModeToggle = () => {
     <card-component empty />
   </main-section>
 
-  <bottom-other-pages-section />
 </template>

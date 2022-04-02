@@ -1,13 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-import { mdiMonitorCellphone, mdiAccountMultiple, mdiTableBorder, mdiTableOff } from '@mdi/js'
+import {
+  mdiMonitorCellphone,
+  mdiAccountMultiple,
+  mdiTableBorder,
+  mdiTableOff
+} from '@mdi/js'
 import MainSection from '@/components/MainSection.vue'
 import Notification from '@/components/Notification.vue'
 import ClientsTable from '@/components/ClientsTable.vue'
 import CardComponent from '@/components/CardComponent.vue'
 import TitleBar from '@/components/TitleBar.vue'
 import HeroBar from '@/components/HeroBar.vue'
-import BottomOtherPagesSection from '@/components/BottomOtherPagesSection.vue'
 import TitleSubBar from '@/components/TitleSubBar.vue'
 
 const titleStack = ref(['Admin', 'Tables'])
@@ -17,12 +21,12 @@ const titleStack = ref(['Admin', 'Tables'])
   <title-bar :title-stack="titleStack" />
   <hero-bar>Tables</hero-bar>
   <main-section>
-    <notification
+    <!-- <notification
       color="info"
       :icon="mdiMonitorCellphone"
     >
       <b>Responsive table.</b> Collapses on mobile
-    </notification>
+    </notification> -->
 
     <card-component
       class="mb-6"
@@ -32,7 +36,7 @@ const titleStack = ref(['Admin', 'Tables'])
     >
       <clients-table checkable />
     </card-component>
-
+    <!-- 
     <title-sub-bar
       :icon="mdiTableBorder"
       title="Wrapped variation"
@@ -43,16 +47,16 @@ const titleStack = ref(['Admin', 'Tables'])
       :icon="mdiTableBorder"
     >
       <b>Tightly wrapped</b> &mdash; table header becomes card header
-    </notification>
+    </notification> -->
 
-    <card-component
+    <!-- <card-component
       class="mb-6"
       has-table
     >
       <clients-table checkable />
-    </card-component>
+    </card-component> -->
 
-    <title-sub-bar
+    <!-- <title-sub-bar
       :icon="mdiTableOff"
       title="Empty variation"
     />
@@ -64,8 +68,7 @@ const titleStack = ref(['Admin', 'Tables'])
       <b>Empty table.</b> When there's nothing to show
     </notification>
 
-    <card-component empty />
+    <card-component empty /> -->
   </main-section>
 
-  <bottom-other-pages-section />
 </template>

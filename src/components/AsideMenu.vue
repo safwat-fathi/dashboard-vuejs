@@ -47,7 +47,7 @@ const menuClick = (event, item) => {
     :class="[ asideStyle, isAsideMobileExpanded ? 'left-0' : '-left-60', isAsideLgActive ? 'block' : 'lg:hidden xl:block' ]"
   >
     <div
-      class="flex flex-row w-full flex-1 h-14 items-center dark:bg-transparent"
+      class="flex flex-row w-full flex-1 items-center dark:bg-transparent"
       :class="[ asideBrandStyle ]"
     >
       <nav-bar-item
@@ -62,8 +62,14 @@ const menuClick = (event, item) => {
           size="24"
         />
       </nav-bar-item>
-      <div class="flex-1 px-3">
-        <span>Admin</span> <b class="font-black">One</b>
+      <div class="flex-1 px-3 pt-3">
+        <router-link to="/">
+          <img
+            class="max-w-full h-auto rounded"
+            src="@/assets/images/akila-logo.jpeg"
+            alt="Akila"
+          >
+        </router-link>
       </div>
     </div>
     <div>

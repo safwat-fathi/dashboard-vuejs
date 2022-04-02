@@ -1,13 +1,23 @@
 import axios from "axios";
 
+const API_BASE_URL = "http://145.255.67.211:1111/new_akila/api";
+const configHeaders = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+};
+
 export const login = async (user) => {
   try {
-    const response = await axios.post(process.env.API_BASE_URL + "login", {
-      username: user.name,
-      password: user.password,
-    });
+    const response = await axios.post(
+      API_BASE_URL + "/login",
+      {
+        email: user.email,
+        password: user.password,
+      },
+      { headers: configHeaders }
+    );
 
-    if (response.data.accessToken) {
+    if (response.data.access_token) {
       localStorage.setItem("user", JSON.stringify(response.data));
     }
 
@@ -23,7 +33,7 @@ export const logout = () => {
 
 export const register = async (user) => {
   try {
-    const response = await axios.post(process.env.API_BASE_URL + "register", {
+    const response = await axios.post(API_BASE_URL + "register", {
       username: user.name,
       email: user.email,
       password: user.password,

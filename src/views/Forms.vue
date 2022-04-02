@@ -12,7 +12,6 @@ import Control from '@/components/Control.vue'
 import Divider from '@/components/Divider.vue'
 import JbButton from '@/components/JbButton.vue'
 import JbButtons from '@/components/JbButtons.vue'
-import BottomOtherPagesSection from '@/components/BottomOtherPagesSection.vue'
 import TitledSection from '@/components/TitledSection.vue'
 import TitleSubBar from '@/components/TitleSubBar.vue'
 
@@ -171,5 +170,4 @@ const submit = () => {
     </card-component>
   </main-section>
 
-  <bottom-other-pages-section />
 </template>

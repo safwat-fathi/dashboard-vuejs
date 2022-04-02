@@ -1,14 +1,19 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { sectionBgLogin, sectionBgLoginDark, sectionBgError, sectionBgErrorDark } from '@/colors'
+import {
+  sectionBgLogin,
+  sectionBgLoginDark,
+  sectionBgError,
+  sectionBgErrorDark
+} from '@/colors'
 import MainSection from '@/components/MainSection.vue'
 
 const props = defineProps({
   bg: {
     type: String,
     required: true,
-    validator: value => ['login', 'error'].includes(value)
+    validator: (value) => ['login', 'register', 'error'].includes(value)
   }
 })
 

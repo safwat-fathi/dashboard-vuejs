@@ -1,7 +1,14 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useStore } from 'vuex'
-import { mdiAccount, mdiAccountCircle, mdiLock, mdiMail, mdiAsterisk, mdiFormTextboxPassword } from '@mdi/js'
+import {
+  mdiAccount,
+  mdiAccountCircle,
+  mdiLock,
+  mdiMail,
+  mdiAsterisk,
+  mdiFormTextboxPassword
+} from '@mdi/js'
 import MainSection from '@/components/MainSection.vue'
 import CardComponent from '@/components/CardComponent.vue'
 import TitleBar from '@/components/TitleBar.vue'
@@ -10,7 +17,6 @@ import Field from '@/components/Field.vue'
 import Control from '@/components/Control.vue'
 import FilePicker from '@/components/FilePicker.vue'
 import JbButton from '@/components/JbButton.vue'
-import BottomOtherPagesSection from '@/components/BottomOtherPagesSection.vue'
 import JbButtons from '@/components/JbButtons.vue'
 import UserCard from '@/components/UserCard.vue'
 
@@ -168,5 +174,4 @@ const submitPass = () => {
     </div>
   </main-section>
 
-  <bottom-other-pages-section />
 </template>

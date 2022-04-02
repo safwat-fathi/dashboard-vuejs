@@ -24,20 +24,20 @@ defineProps({
           {{ title }}
         </li>
       </ul>
-      <jb-button
+      <!-- <jb-button
         href="https://github.com/justboil/admin-one-vue-tailwind"
         color="info"
         label="Star on GitHub"
         target="_blank"
         :icon="mdiGithub"
-      />
+      /> -->
     </level>
   </section>
 </template>
 
 <style scoped>
 li.title-stack-item:not(:last-child):after {
-  content: '/';
+  content: "/";
   @apply inline-block pl-3;
 }
 </style>

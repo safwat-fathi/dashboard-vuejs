@@ -4,7 +4,6 @@ import TitleBar from '@/components/TitleBar.vue'
 import HeroBar from '@/components/HeroBar.vue'
 import TitledSection from '@/components/TitledSection.vue'
 import MainSection from '@/components/MainSection.vue'
-import BottomOtherPagesSection from '@/components/BottomOtherPagesSection.vue'
 
 const titleStack = ref(['Admin', 'Responsive layout'])
 </script>
@@ -62,5 +61,4 @@ const titleStack = ref(['Admin', 'Responsive layout'])
     </div>
   </main-section>
 
-  <bottom-other-pages-section />
 </template>
