@@ -10,7 +10,7 @@ import Pill from '@/components/Pill.vue'
 
 const store = useStore()
 
-const userName = computed(() => store.state.userName)
+const userName = computed(() => store.state.user.name)
 
 const userSwitchVal = ref([])
 </script>

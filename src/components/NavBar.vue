@@ -37,15 +37,19 @@ const isNavBarVisible = computed(() => !store.state.isFullScreen)
 
 const isAsideMobileExpanded = computed(() => store.state.isAsideMobileExpanded)
 
-const userName = computed(() => store.state.userName)
+const userName = computed(() => store.state.user.name)
 
-const menuToggleMobileIcon = computed(() => isAsideMobileExpanded.value ? mdiBackburger : mdiForwardburger)
+const menuToggleMobileIcon = computed(() =>
+  isAsideMobileExpanded.value ? mdiBackburger : mdiForwardburger
+)
 
 const menuToggleMobile = () => store.dispatch('asideMobileToggle')
 
 const isMenuNavBarActive = ref(false)
 
-const menuNavBarToggleIcon = computed(() => isMenuNavBarActive.value ? mdiClose : mdiDotsVertical)
+const menuNavBarToggleIcon = computed(() =>
+  isMenuNavBarActive.value ? mdiClose : mdiDotsVertical
+)
 
 const menuNavBarToggle = () => {
   isMenuNavBarActive.value = !isMenuNavBarActive.value
@@ -99,9 +103,7 @@ const menuOpenLg = () => {
         lg:w-auto lg:items-stretch lg:flex lg:grow lg:static lg:border-b-0 lg:overflow-visible lg:shadow-none dark:bg-gray-900"
       :class="[isMenuNavBarActive ? 'block' : 'hidden']"
     >
-      <div
-        class="max-h-screen-menu overflow-y-auto lg:overflow-visible lg:flex lg:items-stretch lg:justify-end lg:ml-auto"
-      >
+      <div class="max-h-screen-menu overflow-y-auto lg:overflow-visible lg:flex lg:items-stretch lg:justify-end lg:ml-auto">
         <nav-bar-menu has-divider>
           <nav-bar-item-label
             :icon="mdiMenu"
