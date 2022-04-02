@@ -11,7 +11,8 @@ import store from "@/store";
 const routes = [
   {
     meta: {
-      title: "Select style",
+      title: "Home",
+      requiresAuth: true,
     },
     path: "/",
     name: "home",
@@ -22,6 +23,7 @@ const routes = [
   {
     meta: {
       title: "Tables",
+      requiresAuth: true,
     },
     path: "/tables",
     name: "tables",
@@ -77,33 +79,49 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "login" */ "@/views/Login.vue"),
   },
-  // {
-  //   meta: {
-  //     title: "Error",
-  //     fullScreen: true,
-  //   },
-  //   path: "/error",
-  //   name: "error",
-  //   component: () =>
-  //     import(/* webpackChunkName: "error" */ "@/views/Error.vue"),
-  // },
+  {
+    meta: {
+      title: "Register",
+      fullScreen: true,
+    },
+    path: "/register",
+    name: "register",
+    component: () =>
+      import(/* webpackChunkName: "register" */ "@/views/Register.vue"),
+  },
+  {
+    meta: {
+      title: "Error",
+      fullScreen: true,
+    },
+    path: "/:pathMatch(.*)*",
+    name: "error",
+    component: () =>
+      import(/* webpackChunkName: "error" */ "@/views/Error.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
-    return savedPosition || { top: 0 };
-  },
+  // scrollBehavior(to, from, savedPosition) {
+  //   return savedPosition || { top: 0 };
+  // },
 });
 
 router.beforeEach((to, from, next) => {
   // to and from are both route objects. must call `next`.
-  // call fetch access token
   // store access token
   // check if access token is stored
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    console.log(store.state.userName);
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      console.log("user is not authenticated");
+      next("/login");
+    }
+
+    console.log("user is authenticated");
   }
   // if (to.fullPath === '/tables') {
   // 	next('/login')

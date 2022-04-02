@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import {
   mdiForwardburger,
   mdiBackburger,
@@ -24,8 +25,10 @@ import Divider from '@/components/Divider.vue'
 import UserAvatar from '@/components/UserAvatar.vue'
 import Icon from '@/components/Icon.vue'
 import NavBarSearch from '@/components/NavBarSearch.vue'
+import { logout } from '@/services/auth'
 
 const store = useStore()
+const router = useRouter()
 
 const lightBorderStyle = computed(() => store.state.lightBorderStyle)
 
@@ -57,6 +60,11 @@ const menuNavBarToggle = () => {
 
 const menuOpenLg = () => {
   store.dispatch('asideLgToggle', true)
+}
+
+const userLogout = () => {
+  logout()
+  router.push('/')
 }
 </script>
 
@@ -148,7 +156,10 @@ const menuOpenLg = () => {
             is-desktop-icon-only
           />
         </nav-bar-item>
-        <nav-bar-item is-desktop-icon-only>
+        <nav-bar-item
+          is-desktop-icon-only
+          @click.prevent="userLogout"
+        >
           <nav-bar-item-label
             :icon="mdiLogout"
             label="Log out"

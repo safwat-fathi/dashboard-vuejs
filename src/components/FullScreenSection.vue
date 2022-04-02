@@ -25,6 +25,8 @@ const colorClass = computed(() => {
   switch (props.bg) {
     case 'login':
       return darkMode.value ? sectionBgLoginDark : sectionBgLogin
+    case 'register':
+      return darkMode.value ? sectionBgLoginDark : sectionBgLogin
     case 'error':
       return darkMode.value ? sectionBgErrorDark : sectionBgError
   }
@@ -35,7 +37,7 @@ const colorClass = computed(() => {
 
 <template>
   <main-section
-    class="flex h-screen items-center justify-center"
+    class="flex min-h-screen items-center justify-center"
     :class="colorClass"
   >
     <slot

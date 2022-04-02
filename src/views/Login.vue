@@ -21,10 +21,14 @@ const form = reactive({
 const router = useRouter()
 
 const submit = async () => {
-  const response = await login({ email: form.name, password: form.password })
+  try {
+    const user = await login({ email: form.name, password: form.password })
 
-  if (response) {
-    router.push('/')
+    if (user) {
+      router.push('/')
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
 </script>
@@ -42,7 +46,7 @@ const submit = async () => {
     >
       <field
         label="Login"
-        help="Please enter user name"
+        help="Please enter email"
       >
         <control
           v-model="form.name"
@@ -81,11 +85,12 @@ const submit = async () => {
           color="info"
           label="Login"
         />
+        <span>Do not have an account?</span>
         <jb-button
-          to="/"
+          to="/register"
           color="info"
           outline
-          label="Back"
+          label="Register"
         />
       </jb-buttons>
     </card-component>
