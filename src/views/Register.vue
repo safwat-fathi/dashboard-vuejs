@@ -27,9 +27,12 @@ const registerSchema = Yup.object().shape({
   FirstName: Yup.string().required(),
   BirthDate: Yup.date('Please enter valid date').nullable().required(),
   HireDate: Yup.date('Please enter valid date').nullable().required(),
-  PostalCode: Yup.number(),
+  PostalCode: Yup.number('Please enter valid postal code').nullable(),
   Username: Yup.string().required(),
-  Country: Yup.string().required(),
+  Country: Yup.object().shape({
+    label: Yup.string().nullable().required(),
+    id: Yup.string().nullable().required()
+  }),
   LicenseStart: Yup.date('Please enter valid date').nullable().required(),
   LicenseEnd: Yup.date('Please enter valid date').nullable().required(),
   Phone: Yup.string()
@@ -52,9 +55,9 @@ const form = reactive({
   FirstName: '',
   BirthDate: null,
   HireDate: null,
-  PostalCode: '',
+  PostalCode: null,
   Username: '',
-  Country: '',
+  Country: { label: '', id: '' },
   LicenseStart: null,
   LicenseEnd: null,
   Phone: '',
@@ -90,22 +93,30 @@ const validate = (field) => {
       formErrors[field] = ''
     })
     .catch((err) => {
-      // console.log(err)
       formErrors[field] = err.message
     })
 }
 
 const submit = async () => {
-  Object.keys(form).forEach((field) => {
-    validate(field)
-  })
-  // validate('name')
-  console.log(formErrors)
   try {
-    // const user = await register({ ...form })
-    // if (user) {
-    //   router.push('/login')
-    // }
+    Object.keys(form).forEach((field) => {
+      validate(field)
+    })
+
+    let formIsValid = true
+    Object.values(formErrors).forEach((error) => {
+      if (error.length) {
+        formIsValid = false
+      }
+    })
+
+    if (formIsValid) {
+      const res = await register(form)
+      console.log(res)
+      if (res) {
+        router.push('/login')
+      }
+    }
   } catch (error) {
     console.log(error)
   }
@@ -150,10 +161,10 @@ const submit = async () => {
 
       <field
         label="User Name"
-        :help="formErrors.UserName"
+        :help="formErrors.Username"
       >
         <control
-          v-model.trim="form.UserName"
+          v-model.trim="form.Username"
           :icon="mdiAccount"
           name="user-name"
           autocomplete="user-name"

@@ -31,12 +31,10 @@ export const logout = () => {
   localStorage.removeItem("user");
 };
 
-export const register = async (user) => {
+export const register = async (userData) => {
   try {
-    const response = await axios.post(API_BASE_URL + "register", {
-      username: user.name,
-      email: user.email,
-      password: user.password,
+    const response = await axios.post(API_BASE_URL + "/register", {
+      ...userData,
     });
 
     return response.data;
