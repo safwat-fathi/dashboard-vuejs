@@ -11,21 +11,56 @@ import Divider from '@/components/Divider.vue'
 import JbButton from '@/components/JbButton.vue'
 import JbButtons from '@/components/JbButtons.vue'
 import { login } from '@/services/auth'
+import * as Yup from 'yup'
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email format').required(),
+  password: Yup.string().required()
+})
 const form = reactive({
-  name: '',
+  email: '',
   password: ''
   // remember: ['remember']
 })
 
+const formErrors = reactive({
+  email: '',
+  password: ''
+})
+
 const router = useRouter()
+
+const validate = (field) => {
+  loginSchema
+    .validateAt(field, form)
+    .then(() => {
+      formErrors[field] = ''
+    })
+    .catch((err) => {
+      formErrors[field] = err.message
+    })
+}
 
 const submit = async () => {
   try {
-    const user = await login({ email: form.name, password: form.password })
+    Object.keys(form).forEach((field) => {
+      validate(field)
+    })
 
-    if (user) {
-      router.push('/')
+    let formIsValid = true
+
+    Object.values(formErrors).forEach((error) => {
+      if (error.length) {
+        formIsValid = false
+      }
+    })
+
+    if (formIsValid) {
+      const res = await login(form)
+      console.log(res)
+      // if (res) {
+      //   router.push('/')
+      // }
     }
   } catch (error) {
     console.log(error)
@@ -46,28 +81,24 @@ const submit = async () => {
     >
       <field
         label="Login"
-        help="Please enter email"
+        :help="formErrors.email"
       >
         <control
-          v-model="form.name"
+          v-model.trim="form.email"
           :icon="mdiAccount"
           name="login"
-          autocomplete="username"
-          required
         />
       </field>
 
       <field
         label="Password"
-        help="Please enter your password"
+        :help="formErrors.password"
       >
         <control
           v-model="form.password"
           :icon="mdiAsterisk"
           type="password"
           name="password"
-          autocomplete="current-password"
-          required
         />
       </field>
 
