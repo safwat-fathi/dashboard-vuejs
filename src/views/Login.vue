@@ -57,10 +57,10 @@ const submit = async () => {
 
     if (formIsValid) {
       const res = await login(form)
-      console.log(res)
-      // if (res) {
-      //   router.push('/')
-      // }
+
+      if (res.access_token) {
+        router.push('/')
+      }
     }
   } catch (error) {
     console.log(error)

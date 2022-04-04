@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   mdiAccount,
@@ -16,6 +16,7 @@ import Field from '@/components/Field.vue'
 import Control from '@/components/Control.vue'
 import Divider from '@/components/Divider.vue'
 import JbButton from '@/components/JbButton.vue'
+import Notification from '@/components/Notification.vue'
 import JbButtons from '@/components/JbButtons.vue'
 import { useStore } from 'vuex'
 import { register } from '@/services/auth'
@@ -29,10 +30,11 @@ const registerSchema = Yup.object().shape({
   HireDate: Yup.date('Please enter valid date').nullable().required(),
   PostalCode: Yup.number('Please enter valid postal code').nullable(),
   Username: Yup.string().required(),
-  Country: Yup.object().shape({
-    label: Yup.string().nullable().required(),
-    id: Yup.string().nullable().required()
-  }),
+  Country: Yup.string().required(),
+  // Country: Yup.object().shape({
+  //   label: Yup.string().nullable().required(),
+  //   id: Yup.string().nullable().required()
+  // }),
   LicenseStart: Yup.date('Please enter valid date').nullable().required(),
   LicenseEnd: Yup.date('Please enter valid date').nullable().required(),
   Phone: Yup.string()
@@ -57,7 +59,7 @@ const form = reactive({
   HireDate: null,
   PostalCode: null,
   Username: '',
-  Country: { label: '', id: '' },
+  Country: '',
   LicenseStart: null,
   LicenseEnd: null,
   Phone: '',
@@ -103,6 +105,9 @@ const submit = async () => {
       validate(field)
     })
 
+    console.log(form)
+    console.log(formErrors)
+
     let formIsValid = true
     Object.values(formErrors).forEach((error) => {
       if (error.length) {
@@ -112,8 +117,8 @@ const submit = async () => {
 
     if (formIsValid) {
       const res = await register(form)
-      console.log(res)
-      if (res) {
+
+      if (res.access_token) {
         router.push('/login')
       }
     }
@@ -237,11 +242,9 @@ const submit = async () => {
       >
         <control
           v-model="form.LicenseStart"
-          :icon="mdiFileCertificateOutline"
+          :icon="mdiCalendarRange"
           type="date"
           name="license-start"
-          autocomplete="license-start"
-          required
         />
       </field>
       <field
@@ -250,11 +253,9 @@ const submit = async () => {
       >
         <control
           v-model="form.LicenseEnd"
-          :icon="mdiFileCertificateOutline"
+          :icon="mdiCalendarRange"
           type="date"
           name="license-end"
-          autocomplete="license-end"
-          required
         />
       </field>
 
@@ -267,8 +268,6 @@ const submit = async () => {
           :icon="mdiCalendarRange"
           type="date"
           name="birth-date"
-          autocomplete="birth-date"
-          required
         />
       </field>
 
@@ -281,8 +280,6 @@ const submit = async () => {
           :icon="mdiCalendarRange"
           type="date"
           name="hire-date"
-          autocomplete="hire-date"
-          required
         />
       </field>
 
@@ -330,5 +327,13 @@ const submit = async () => {
         />
       </jb-buttons>
     </card-component>
+    <!-- <notification
+			v-if=""
+      color="success"
+      :icon="mdiCheckCircleOutline"
+      :outline="notificationsOutline"
+    >
+      <b>Registered successfully</b>
+    </notification> -->
   </full-screen-section>
 </template>

@@ -64,7 +64,7 @@ const menuOpenLg = () => {
 
 const userLogout = () => {
   logout()
-  router.push('/')
+  router.push('/login')
 }
 </script>
 
