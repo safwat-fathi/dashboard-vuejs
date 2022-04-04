@@ -33,6 +33,19 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "tables" */ "@/views/Tables.vue"),
   },
+  {
+    meta: {
+      title: "Already logged in",
+      fullScreen: true,
+    },
+    path: "/has-account",
+    name: "has account",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "tables" */ "@/views/HasAccount.vue"),
+  },
   // {
   //   meta: {
   //     title: "Forms",
@@ -117,15 +130,17 @@ router.beforeEach((to, from, next) => {
     let user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
-      console.log("user is not authenticated");
       next("/login");
     }
-
-    console.log("user is authenticated");
   }
-  // if (to.fullPath === '/tables') {
-  // 	next('/login')
-  // }
+
+  if (to.fullPath === "/login") {
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      next("/has-account");
+    }
+  }
 
   next();
 });
