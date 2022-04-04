@@ -41,4 +41,5 @@ export default {
   /* Sample data (commonly used) */
   clients: [],
   history: [],
+  orders: [],
 };

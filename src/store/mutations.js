@@ -29,4 +29,8 @@ export default {
       state.user.avatar = avatar;
     }
   },
+
+  setOrders(state, payload) {
+    state.orders = payload;
+  },
 };

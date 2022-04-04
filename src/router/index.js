@@ -39,12 +39,12 @@ const routes = [
       fullScreen: true,
     },
     path: "/has-account",
-    name: "has account",
+    name: "has-account",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "tables" */ "@/views/HasAccount.vue"),
+      import(/* webpackChunkName: "has-account" */ "@/views/HasAccount.vue"),
   },
   // {
   //   meta: {
