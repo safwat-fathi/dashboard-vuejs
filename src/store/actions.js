@@ -82,11 +82,14 @@ export default {
       Accept: "application/json",
       Authorization: "Bearer " + user.access_token,
     };
-    const response = await axios.get(
-      "http://145.255.67.211:1111/new_akila/api/eairs",
-      configHeaders
-    );
-    console.log(response);
-    commit("setOrders", response.data);
+
+    const response = await axios({
+      method: "GET",
+      headers: configHeaders,
+      baseURL: "http://145.255.67.211:1111/new_akila/api",
+      url: "/eairs",
+    });
+
+    commit("setOrders", response.data.data);
   },
 };
