@@ -107,25 +107,58 @@ const remove = (arr, cb) => {
   <table class="block overflow-x-scroll overflow-y-hidden">
     <thead>
       <tr>
-        <th>MAWBNO</th>
+        <th>Agent</th>
+        <th>Attach_CI</th>
+        <th>Attach_CMNFST</th>
+        <th>Attach_COO</th>
+        <th>Attach_DGD</th>
+        <th>Attach_DO</th>
+        <th>Attach_HAWB</th>
+        <th>Attach_OTR</th>
+        <th>Attach_PL</th>
+        <th>BookingPerson</th>
+        <th>Carrier</th>
+        <th>ChargeableWt</th>
+        <th>Commodity</th>
+        <th>Consignee</th>
+        <th>Currency</th>
+        <th>DateandTime</th>
+        <th>ETA</th>
+        <th>ETD</th>
+        <th>FlightNO</th>
+        <th>Freight</th>
+        <th>FromLoc</th>
+        <th>GrossWt</th>
+        <th>HSCode</th>
+        <th>Incoterms</th>
+        <th>Insurance</th>
         <th>Job</th>
         <th>JobNumber</th>
+        <th>LastEditDateTime</th>
+        <th>LastEditUserIDGroup</th>
+        <th>LastEditUserIP</th>
+        <th>LastEditUserName</th>
+        <th>MAWBNO</th>
+        <th>NumberOfHAWB</th>
         <th>OrderNumber</th>
-        <th>POREF</th>
-        <th>Incoterms</th>
-        <th>Agent</th>
-        <th>Shipper</th>
-        <th>Consignee</th>
-        <th>FromLoc</th>
-        <th>ToLoc</th>
-        <th>FlightNO</th>
-        <th>POL</th>
         <th>POD</th>
-        <th>ETD</th>
-        <th>ETA</th>
-        <th>Carrier</th>
-        <th>Freight</th>
-        <th>Commodity</th>
+        <th>POL</th>
+        <th>POREF</th>
+        <th>Pieces</th>
+        <th>RemarkDateandTime</th>
+        <th>RemarkEmail</th>
+        <th>RemarkNote</th>
+        <th>RemarkTypy</th>
+        <th>Shipper</th>
+        <th>Status</th>
+        <th>ToLoc</th>
+        <th>UUID</th>
+        <th>UnitPrice</th>
+        <th>UserIDGroup</th>
+        <th>UserIP</th>
+        <th>UserName</th>
+        <th>VolumeWt</th>
+        <th>WeightType</th>
 
         <th />
       </tr>
@@ -145,16 +178,154 @@ const remove = (arr, cb) => {
           {{ order.Agent }}
         </td>
         <td data-label="BookingPerson">
-          {{ order.BookingPerson }}
+          {{ order.Attach_CI }}
         </td>
         <td data-label="Carrier">
-          {{ order.Carrier }}
+          {{ order.Attach_CMNFST }}
         </td>
         <td data-label="ChargeableWt">
+          {{ order.Attach_COO }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Attach_DGD }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Attach_HAWB }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Attach_DGD }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Attach_OTR }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Attach_PL }}
+        </td>
+        <td data-label="Currency">
+          {{ order.BookingPerson }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Carrier }}
+        </td>
+        <td data-label="Currency">
           {{ order.ChargeableWt }}
         </td>
         <td data-label="Currency">
+          {{ order.Commodity }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Consignee }}
+        </td>
+        <td data-label="Currency">
           {{ order.Currency }}
+        </td>
+        <td data-label="Currency">
+          {{ order.DateandTime }}
+        </td>
+        <td data-label="Currency">
+          {{ order.ETA }}
+        </td>
+        <td data-label="Currency">
+          {{ order.ETD }}
+        </td>
+        <td data-label="Currency">
+          {{ order.FlightNO }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Freight }}
+        </td>
+        <td data-label="Currency">
+          {{ order.FromLoc }}
+        </td>
+        <td data-label="Currency">
+          {{ order.GrossWt }}
+        </td>
+        <td data-label="Currency">
+          {{ order.HSCode }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Incoterms }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Insurance }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Job }}
+        </td>
+        <td data-label="Currency">
+          {{ order.JobNumber }}
+        </td>
+        <td data-label="Currency">
+          {{ order.LastEditDateTime }}
+        </td>
+        <td data-label="Currency">
+          {{ order.LastEditUserIDGroup }}
+        </td>
+        <td data-label="Currency">
+          {{ order.LastEditUserIP }}
+        </td>
+        <td data-label="Currency">
+          {{ order.LastEditUserName }}
+        </td>
+        <td data-label="Currency">
+          {{ order.MAWBNO }}
+        </td>
+        <td data-label="Currency">
+          {{ order.NumberOfHAWB }}
+        </td>
+        <td data-label="Currency">
+          {{ order.OrderNumber }}
+        </td>
+        <td data-label="Currency">
+          {{ order.POD }}
+        </td>
+        <td data-label="Currency">
+          {{ order.POL }}
+        </td>
+        <td data-label="Currency">
+          {{ order.POREF }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Pieces }}
+        </td>
+        <td data-label="Currency">
+          {{ order.RemarkDateandTime }}
+        </td>
+        <td data-label="Currency">
+          {{ order.RemarkEmail }}
+        </td>
+        <td data-label="Currency">
+          {{ order.RemarkNote }}
+        </td>
+        <td data-label="Currency">
+          {{ order.RemarkTypy }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Shipper }}
+        </td>
+        <td data-label="Currency">
+          {{ order.Status }}
+        </td>
+        <td data-label="Currency">
+          {{ order.ToLoc }}
+        </td>
+        <td data-label="Currency">
+          {{ order.UUID }}
+        </td>
+        <td data-label="Currency">
+          {{ order.UserIDGroup }}
+        </td>
+        <td data-label="Currency">
+          {{ order.UserIP }}
+        </td>
+        <td data-label="Currency">
+          {{ order.UserName }}
+        </td>
+        <td data-label="Currency">
+          {{ order.VolumeWt }}
+        </td>
+        <td data-label="Currency">
+          {{ order.WeightType }}
         </td>
 
         <!-- <td class="actions-cell">
